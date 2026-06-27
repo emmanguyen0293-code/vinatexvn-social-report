@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Báo cáo Social Media – Vinatex VN | Tuần 4 Tháng 6/2026</title>
+<style>
+  :root {
+    --brand:    #C8102E;
+    --brand-dk: #9b0c23;
+    --fb:       #1877F2;
+    --li:       #0A66C2;
+    --up:       #16a34a;
+    --down:     #dc2626;
+    --neutral:  #64748b;
+    --bg:       #f8f9fa;
+    --card:     #ffffff;
+    --border:   #e2e8f0;
+    --text:     #1e293b;
+    --sub:      #475569;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dk) 100%);
+    color: #fff;
+    padding: 36px 40px 28px;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .logo-box {
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 18px; letter-spacing: -1px;
+  }
+  header h1 { font-size: 22px; font-weight: 700; }
+  header .subtitle { font-size: 13px; opacity: .85; margin-top: 2px; }
+  .meta-row {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin-top: 16px;
+    font-size: 12.5px;
+    opacity: .9;
+  }
+  .meta-row span { display: flex; align-items: center; gap: 6px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--sub);
+    margin-bottom: 14px;
+    margin-top: 36px;
+  }
+  .section-label:first-child { margin-top: 0; }
+  .section-label .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-red  { background: var(--brand); }
+  .dot-fb   { background: var(--fb); }
+  .dot-li   { background: var(--li); }
+  .dot-gray { background: var(--neutral); }
+
+  .exec-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 4px;
+  }
+  .exec-box p { color: var(--sub); margin-bottom: 8px; }
+  .exec-box p:last-child { margin-bottom: 0; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 14px;
+    margin-bottom: 4px;
+  }
+  .kpi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .kpi-card.fb::before  { background: var(--fb); }
+  .kpi-card.li::before  { background: var(--li); }
+  .kpi-label { font-size: 11.5px; color: var(--sub); margin-bottom: 6px; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: var(--text); line-height: 1; }
+  .kpi-change { font-size: 11.5px; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+  .kpi-change.up   { color: var(--up); }
+  .kpi-change.down { color: var(--down); }
+  .kpi-change.flat { color: var(--neutral); }
+
+  /* vs tuần trước badge */
+  .kpi-vs { font-size: 10.5px; color: var(--neutral); margin-top: 3px; }
+
+  .platform-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-weight: 700; font-size: 14px;
+    color: #fff;
+  }
+  .platform-header.fb { background: var(--fb); }
+  .platform-header.li { background: var(--li); }
+  .platform-header svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+  table {
+    width: 100%; border-collapse: collapse;
+    background: var(--card); font-size: 13px;
+  }
+  thead tr { background: #f1f5f9; }
+  th {
+    padding: 10px 14px; text-align: left;
+    font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .6px;
+    color: var(--sub); white-space: nowrap;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .post-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .post-meta  { font-size: 11.5px; color: var(--sub); }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-video { background: #ede9fe; color: #7c3aed; }
+  .badge-photo { background: #dbeafe; color: #1d4ed8; }
+  .er-high  { color: var(--up); font-weight: 700; }
+  .er-mid   { color: #d97706; font-weight: 600; }
+  .er-low   { color: var(--neutral); }
+  .num { font-weight: 600; }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 4px;
+  }
+  @media(max-width: 680px) { .analysis-grid { grid-template-columns: 1fr; } }
+  .analysis-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .analysis-card h4 {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .8px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .analysis-card h4 .icon { font-size: 14px; }
+  .analysis-card ul { padding-left: 18px; }
+  .analysis-card li { color: var(--sub); margin-bottom: 6px; font-size: 13px; }
+  .analysis-card li:last-child { margin-bottom: 0; }
+  .analysis-card li strong { color: var(--text); }
+
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .rec-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex; gap: 12px;
+  }
+  .rec-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--brand); color: #fff;
+    font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .rec-body strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .rec-body p { font-size: 12.5px; color: var(--sub); }
+
+  .target-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media(max-width: 580px) { .target-row { grid-template-columns: 1fr; } }
+  .target-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .target-card h4 {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .8px;
+    margin-bottom: 12px; color: var(--sub);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .target-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .target-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .target-item .metric { color: var(--sub); }
+  .target-item .goal { font-weight: 700; color: var(--brand); }
+
+  /* So sánh tuần trước */
+  .compare-banner {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 4px;
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .compare-banner .item { display: flex; flex-direction: column; gap: 2px; }
+  .compare-banner .label { font-size: 11px; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; }
+  .compare-banner .val { font-weight: 700; font-size: 15px; }
+  .compare-banner .val.up   { color: var(--up); }
+  .compare-banner .val.down { color: var(--down); }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--sub);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+  footer a { color: var(--brand); text-decoration: none; }
+
+  @media(max-width: 600px) {
+    header { padding: 24px 20px; }
+    .container { padding: 24px 16px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo-box">VTX</div>
+    <div>
+      <h1>Báo cáo Social Media</h1>
+      <div class="subtitle">VINATEX VN CO., LTD — Facebook &amp; LinkedIn</div>
+    </div>
+  </div>
+  <div class="meta-row">
+    <span>📅 Kỳ báo cáo: 20/6/2026 – 26/6/2026</span>
+    <span>🏢 Người lập: Harmony Agency</span>
+    <span>📊 Nền tảng: Facebook · LinkedIn</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- EXEC SUMMARY -->
+  <div class="section-label"><span class="dot dot-red"></span>Tóm tắt điều hành</div>
+  <div class="exec-box">
+    <p>Tuần 20–26/6/2026 đánh dấu bước tăng trưởng mạnh nhất từ trước đến nay của VINATEX VN trên Facebook: <strong>2.053 lượt xem</strong> (+256,4%), <strong>451 người xem unique</strong> (+62,8%) và <strong>48 lượt tương tác</strong> (+585,7%) — tất cả đến từ organic, không có ngân sách quảng cáo. Bài "Cứ 10 chiếc áo bán tại Mỹ" dẫn đầu với 365 lượt xem và 11 lượt chia sẻ — đây là lần đầu tiên một bài đạt được lượng share đáng kể, cho thấy nội dung đang chạm đúng mối quan tâm của cộng đồng dệt may.</p>
+    <p>LinkedIn tuần này ghi nhận <strong>155 lượt hiển thị</strong> (+287,5% so kỳ trước trước đó), 3 lượt cảm xúc. Tương tác LinkedIn vẫn còn khiêm tốn nhưng xu hướng tăng rõ ràng. Ưu tiên tuần tới: khai thác tiếp format nội dung "sự thật ngành" trên cả hai kênh và tăng tần suất bài đăng LinkedIn.</p>
+  </div>
+
+  <!-- SO SÁNH TUẦN TRƯỚC -->
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-gray"></span>So sánh với tuần trước (12–19/6)</div>
+  <div class="compare-banner">
+    <div class="item"><span class="label">FB Lượt xem</span><span class="val up">772 → 2.053 ↑ 166%</span></div>
+    <div class="item"><span class="label">FB Người xem</span><span class="val up">302 → 451 ↑ 49%</span></div>
+    <div class="item"><span class="label">FB Tương tác</span><span class="val up">26 → 48 ↑ 85%</span></div>
+    <div class="item"><span class="label">FB Theo dõi mới</span><span class="val up">7 → 8 ↑ 14%</span></div>
+    <div class="item"><span class="label">LI Hiển thị</span><span class="val down">174 → 155 ↓ 11%</span></div>
+    <div class="item"><span class="label">LI Cảm xúc</span><span class="val down">6 → 3 ↓ 50%</span></div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ═══ FACEBOOK ═══ -->
+  <div class="platform-header fb">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+    Facebook — Kỳ 20/6 – 26/6/2026
+  </div>
+
+  <div class="section-label"><span class="dot dot-fb"></span>KPI & Số liệu chính</div>
+  <div class="kpi-grid">
+    <div class="kpi-card fb">
+      <div class="kpi-label">Lượt xem trang</div>
+      <div class="kpi-value">2.053</div>
+      <div class="kpi-change up">↑ +256,4% so kỳ trước</div>
+      <div class="kpi-vs">Tuần trước: 772</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Người xem (unique)</div>
+      <div class="kpi-value">451</div>
+      <div class="kpi-change up">↑ +62,8% so kỳ trước</div>
+      <div class="kpi-vs">Tuần trước: 302</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Lượt tương tác nội dung</div>
+      <div class="kpi-value">48</div>
+      <div class="kpi-change up">↑ +585,7% so kỳ trước</div>
+      <div class="kpi-vs">Tuần trước: 26</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Lượt truy cập trang</div>
+      <div class="kpi-value">382</div>
+      <div class="kpi-change up">↑ +257% so kỳ trước</div>
+      <div class="kpi-vs">Tuần trước: 134</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Lượt theo dõi mới</div>
+      <div class="kpi-value">8</div>
+      <div class="kpi-change up">↑ +100% so kỳ trước</div>
+      <div class="kpi-vs">Tuần trước: 7</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Xem tối thiểu 3 giây</div>
+      <div class="kpi-value">51</div>
+      <div class="kpi-change down">↓ -49,5% so kỳ trước</div>
+      <div class="kpi-vs">Cần cải thiện thời lượng xem video</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-fb"></span>Hiệu quả từng bài đăng</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Bài đăng</th>
+          <th>Ngày</th>
+          <th>Lượt xem</th>
+          <th>Thích</th>
+          <th>Bình luận</th>
+          <th>Chia sẻ</th>
+          <th>Engagement Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="post-title">Cứ 10 chiếc áo bán tại Mỹ, bao nhiêu cái may tại Việt Nam?</div>
+            <div class="post-meta">20/6 • 19:53</div>
+          </td>
+          <td class="post-meta">20/6</td>
+          <td class="num">365</td>
+          <td class="num">5</td>
+          <td class="num">1</td>
+          <td class="num">11</td>
+          <td class="er-high">4,7%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="post-title">Kho nguyên liệu – Nơi mọi thức bắt đầu trước khi trở thành thời trang xuất khẩu</div>
+            <div class="post-meta">23/6 • 13:00</div>
+          </td>
+          <td class="post-meta">23/6</td>
+          <td class="num">178</td>
+          <td class="num">6</td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="er-mid">4,5%</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="post-title">Có những thứ xảy ra giữa cuộn vải thô và chiếc áo hoàn chỉnh...</div>
+            <div class="post-meta">25/6 • 12:00</div>
+          </td>
+          <td class="post-meta">25/6</td>
+          <td class="num">116</td>
+          <td class="num">3</td>
+          <td class="num">0</td>
+          <td class="num">2</td>
+          <td class="er-mid">4,3%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-fb"></span>Nhận định</div>
+  <div class="analysis-grid">
+    <div class="analysis-card">
+      <h4><span class="icon">✅</span> Điểm mạnh</h4>
+      <ul>
+        <li>Bài "Cứ 10 chiếc áo..." đạt <strong>11 lượt chia sẻ</strong> — kỷ lục cao nhất từ trước đến nay. Nội dung dạng "số liệu ngành gây bất ngờ" đang viral tốt.</li>
+        <li>3 bài đều duy trì <strong>engagement rate trên 4%</strong> — nhất quán và vượt trung bình ngành (~1–3% trên Facebook).</li>
+        <li>Lượt xem tăng <strong>gấp 2,7 lần</strong> so tuần trước mà không tốn ngân sách — thuật toán đang reward nội dung của Vinatex VN.</li>
+      </ul>
+    </div>
+    <div class="analysis-card">
+      <h4><span class="icon">⚠️</span> Cần cải thiện</h4>
+      <ul>
+        <li>Lượt xem video tối thiểu 3 giây giảm 49,5% — cần <strong>cải thiện 3 giây đầu</strong> của video để giữ chân người xem.</li>
+        <li>Lượt click liên kết không có dữ liệu — cần thêm link có UTM vào caption để đo traffic về website.</li>
+        <li>Chưa có bài nào tạo được bình luận nhiều — cần thêm câu hỏi hoặc poll để kích thích conversation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ═══ LINKEDIN ═══ -->
+  <div class="platform-header li">
+    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn — Kỳ 20/6 – 25/6/2026
+  </div>
+
+  <div class="section-label"><span class="dot dot-li"></span>KPI & Số liệu chính</div>
+  <div class="kpi-grid">
+    <div class="kpi-card li">
+      <div class="kpi-label">Lượt hiển thị (Impressions)</div>
+      <div class="kpi-value">155</div>
+      <div class="kpi-change up">↑ +287,5% so kỳ trước đó</div>
+      <div class="kpi-vs">Tuần trước: 174</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Lượt thả cảm xúc</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-change up">↑ +200% so kỳ trước đó</div>
+      <div class="kpi-vs">Tuần trước: 6</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Bình luận</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-change flat">— Chưa có tương tác sâu</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Bài đăng lại (Reposts)</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-change flat">—</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Engagement Rate ước tính</div>
+      <div class="kpi-value">1,9%</div>
+      <div class="kpi-change down">↓ Giảm so tuần trước (3,4%)</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Lượt hiển thị trả phí</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-change flat">— 100% organic</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-li"></span>Nhận định</div>
+  <div class="analysis-grid">
+    <div class="analysis-card">
+      <h4><span class="icon">✅</span> Điểm mạnh</h4>
+      <ul>
+        <li>Lượt hiển thị duy trì <strong>trên 150/tuần</strong> với 100% organic — trang đang được thuật toán LinkedIn nhận diện đều đặn.</li>
+        <li>Xu hướng tổng thể tăng so với các kỳ trước đó (+287,5%) — nền tảng LinkedIn đang dần được xây dựng bền vững.</li>
+      </ul>
+    </div>
+    <div class="analysis-card">
+      <h4><span class="icon">⚠️</span> Cần cải thiện</h4>
+      <ul>
+        <li>Impressions giảm nhẹ so tuần 3 (174 → 155) — cần tăng số bài đăng hoặc cải thiện hook để thuật toán đẩy rộng hơn.</li>
+        <li>Engagement rate 1,9% — thấp hơn tuần 3 (3,4%). Cần thêm <strong>câu hỏi cuối bài</strong> để kích thích phản ứng từ người xem.</li>
+        <li><strong>0 bình luận tuần thứ 2 liên tiếp</strong> — đây là điểm cần ưu tiên cải thiện nhất cho LinkedIn.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RECOMMENDATIONS -->
+  <div class="section-label"><span class="dot dot-red"></span>Đề xuất cho tuần tới (27/6 – 3/7/2026)</div>
+  <div class="rec-grid">
+    <div class="rec-card">
+      <div class="rec-num">1</div>
+      <div class="rec-body">
+        <strong>Nhân rộng format "số liệu ngành"</strong>
+        <p>Bài "Cứ 10 chiếc áo..." viral nhất tuần. Tiếp tục khai thác dữ liệu thực tế ngành may mặc Việt Nam để tạo nội dung gây bất ngờ.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">2</div>
+      <div class="rec-body">
+        <strong>Cải thiện 3 giây đầu video</strong>
+        <p>Lượt xem tối thiểu 3 giây giảm 49,5%. Mở đầu video bằng con số, câu hỏi gây tò mò hoặc hình ảnh mạnh để giữ người xem.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">3</div>
+      <div class="rec-body">
+        <strong>Thêm câu hỏi cuối mỗi bài (cả 2 kênh)</strong>
+        <p>Ví dụ: "Bạn có biết chiếc áo đang mặc được may ở đâu không?" — kích thích bình luận, tăng organic reach đáng kể.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">4</div>
+      <div class="rec-body">
+        <strong>Tăng lên 4 bài/tuần trên Facebook</strong>
+        <p>Momentum đang tốt, cần duy trì nhịp đăng 4 bài/tuần để thuật toán tiếp tục ưu ái trang.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">5</div>
+      <div class="rec-body">
+        <strong>Thêm link UTM vào caption Facebook</strong>
+        <p>Lượt click liên kết không có dữ liệu tuần này. Thêm link vinatexvn.com có UTM để đo traffic về website chính xác.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">6</div>
+      <div class="rec-body">
+        <strong>Đăng thêm 1 bài LinkedIn/tuần</strong>
+        <p>Impressions LinkedIn giảm nhẹ. Tăng từ 2 lên 3 bài/tuần, đăng Thứ 2 – Thứ 3 – Thứ 5, khung 8–10h sáng.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARGETS -->
+  <div class="section-label" style="margin-top:32px;"><span class="dot dot-red"></span>Mục tiêu tuần tới (27/6 – 3/7/2026)</div>
+  <div class="target-row">
+    <div class="target-card">
+      <h4>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        Facebook
+      </h4>
+      <div class="target-item"><span class="metric">Lượt xem trang</span><span class="goal">2.500+</span></div>
+      <div class="target-item"><span class="metric">Người xem unique</span><span class="goal">550+</span></div>
+      <div class="target-item"><span class="metric">Lượt tương tác</span><span class="goal">60+</span></div>
+      <div class="target-item"><span class="metric">Lượt chia sẻ</span><span class="goal">15+</span></div>
+      <div class="target-item"><span class="metric">Lượt theo dõi mới</span><span class="goal">10+</span></div>
+    </div>
+    <div class="target-card">
+      <h4>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </h4>
+      <div class="target-item"><span class="metric">Lượt hiển thị</span><span class="goal">200+</span></div>
+      <div class="target-item"><span class="metric">Lượt cảm xúc</span><span class="goal">5+</span></div>
+      <div class="target-item"><span class="metric">Bình luận</span><span class="goal">2+</span></div>
+      <div class="target-item"><span class="metric">Engagement rate</span><span class="goal">≥ 3%</span></div>
+      <div class="target-item"><span class="metric">Người theo dõi mới</span><span class="goal">3+</span></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Báo cáo được lập bởi <strong>Harmony Agency</strong> cho <strong>Vinatex VN Co., Ltd</strong> &nbsp;·&nbsp;
+  Kỳ: 20/6/2026 – 26/6/2026 &nbsp;·&nbsp;
+  <a href="https://vinatexvn.com" target="_blank">vinatexvn.com</a>
+</footer>
+
+</body>
+</html>
