@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Báo cáo Social Media – Vinatex VN | Kỳ 18/7 – 25/7/2026</title>
+<style>
+  :root {
+    --brand:    #C8102E;
+    --brand-dk: #9b0c23;
+    --fb:       #1877F2;
+    --li:       #0A66C2;
+    --up:       #16a34a;
+    --down:     #dc2626;
+    --neutral:  #64748b;
+    --bg:       #f8f9fa;
+    --card:     #ffffff;
+    --border:   #e2e8f0;
+    --text:     #1e293b;
+    --sub:      #475569;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; }
+  header { background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dk) 100%); color: #fff; padding: 36px 40px 28px; }
+  .header-top { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .logo-box { width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; letter-spacing: -1px; }
+  header h1 { font-size: 22px; font-weight: 700; }
+  header .subtitle { font-size: 13px; opacity: .85; margin-top: 2px; }
+  .meta-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; font-size: 12.5px; opacity: .9; }
+  .meta-row span { display: flex; align-items: center; gap: 6px; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+  .section-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--sub); margin-bottom: 14px; margin-top: 36px; }
+  .section-label:first-child { margin-top: 0; }
+  .section-label .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot-red  { background: var(--brand); }
+  .dot-fb   { background: var(--fb); }
+  .dot-li   { background: var(--li); }
+  .dot-gray { background: var(--neutral); }
+  .exec-box { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--brand); border-radius: 10px; padding: 20px 24px; margin-bottom: 4px; }
+  .exec-box p { color: var(--sub); margin-bottom: 8px; }
+  .exec-box p:last-child { margin-bottom: 0; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 14px; margin-bottom: 4px; }
+  .kpi-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; position: relative; overflow: hidden; }
+  .kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .kpi-card.fb::before  { background: var(--fb); }
+  .kpi-card.li::before  { background: var(--li); }
+  .kpi-label { font-size: 11.5px; color: var(--sub); margin-bottom: 6px; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: var(--text); line-height: 1; }
+  .kpi-change { font-size: 11.5px; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+  .kpi-change.up   { color: var(--up); }
+  .kpi-change.down { color: var(--down); }
+  .kpi-change.flat { color: var(--neutral); }
+  .kpi-vs { font-size: 10.5px; color: var(--neutral); margin-top: 3px; }
+  .platform-header { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 8px; margin-bottom: 14px; font-weight: 700; font-size: 14px; color: #fff; }
+  .platform-header.fb { background: var(--fb); }
+  .platform-header.li { background: var(--li); }
+  .platform-header svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; background: var(--card); font-size: 13px; }
+  thead tr { background: #f1f5f9; }
+  th { padding: 10px 14px; text-align: left; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--sub); white-space: nowrap; border-bottom: 1px solid var(--border); }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .post-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .post-meta  { font-size: 11.5px; color: var(--sub); }
+  .er-high  { color: var(--up); font-weight: 700; }
+  .er-mid   { color: #d97706; font-weight: 600; }
+  .er-low   { color: var(--neutral); }
+  .num { font-weight: 600; }
+  .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 4px; }
+  @media(max-width: 680px) { .analysis-grid { grid-template-columns: 1fr; } }
+  .analysis-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .analysis-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .analysis-card h4 .icon { font-size: 14px; }
+  .analysis-card ul { padding-left: 18px; }
+  .analysis-card li { color: var(--sub); margin-bottom: 6px; font-size: 13px; }
+  .analysis-card li:last-child { margin-bottom: 0; }
+  .analysis-card li strong { color: var(--text); }
+  .rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .rec-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; display: flex; gap: 12px; }
+  .rec-num { width: 26px; height: 26px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .rec-body strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .rec-body p { font-size: 12.5px; color: var(--sub); }
+  .compare-banner { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 14px 20px; margin-bottom: 4px; display: flex; gap: 24px; flex-wrap: wrap; font-size: 13px; }
+  .compare-banner .item { display: flex; flex-direction: column; gap: 2px; }
+  .compare-banner .label { font-size: 11px; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; }
+  .compare-banner .val { font-weight: 700; font-size: 15px; }
+  .compare-banner .val.up   { color: var(--up); }
+  .compare-banner .val.down { color: var(--down); }
+  .compare-banner .val.flat { color: var(--neutral); }
+  .progress-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .progress-item { margin-bottom: 14px; }
+  .progress-item:last-child { margin-bottom: 0; }
+  .progress-top { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 5px; }
+  .progress-top .metric { color: var(--sub); }
+  .progress-top .stat { font-weight: 700; }
+  .bar { height: 8px; background: #f1f5f9; border-radius: 6px; overflow: hidden; }
+  .bar > span { display: block; height: 100%; border-radius: 6px; }
+  .bar-fb > span { background: var(--fb); }
+  .bar-li > span { background: var(--li); }
+  .bar-gray > span { background: var(--neutral); }
+  .note { font-size: 11.5px; color: var(--neutral); margin-top: 8px; font-style: italic; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+  footer { text-align: center; padding: 24px; color: var(--sub); font-size: 12px; border-top: 1px solid var(--border); margin-top: 16px; }
+  footer a { color: var(--brand); text-decoration: none; }
+  @media(max-width: 600px) {
+    header { padding: 24px 20px; }
+    .container { padding: 24px 16px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo-box">VTX</div>
+    <div>
+      <h1>Báo cáo Social Media — Kỳ 18/7 – 25/7/2026</h1>
+      <div class="subtitle">VINATEX VN CO., LTD — Facebook &amp; LinkedIn</div>
+    </div>
+  </div>
+  <div class="meta-row">
+    <span>📅 Kỳ báo cáo: 18/7 – 25/7/2026 (FB dashboard 17–25/7 · LinkedIn 16–23/7)</span>
+    <span>🏢 Người lập: Harmony Agency</span>
+    <span>📊 Nền tảng: Facebook · LinkedIn · 100% Organic</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- EXEC SUMMARY -->
+  <div class="section-label"><span class="dot dot-red"></span>Tóm tắt điều hành</div>
+  <div class="exec-box">
+    <p>Kỳ 18/7–25/7 cho thấy <strong>hai nền tảng đi ngược chiều</strong>. Facebook chững lại: <strong>1.026 lượt xem (−19%)</strong> và <strong>thời gian xem giảm còn 1 phút 7 giây (−55%)</strong>, tương tác ở mức rất thấp (5 lượt, −58%). Reach vẫn dựa chủ yếu vào định dạng tĩnh — <strong>Ảnh chiếm 63,3%</strong> và Nhiều ảnh 16,1% (gộp ~79% lượt xem), trong khi Thước phim chỉ 4%. Đáng chú ý, <strong>68,9% lượt xem đến từ người chưa theo dõi</strong> — nội dung có sức lan toả nhưng tỷ lệ giữ chân/chuyển đổi thành follower còn yếu.</p>
+    <p>Ngược lại, <strong>LinkedIn là điểm sáng của kỳ</strong>: lượt hiển thị bật lên <strong>309 (+149,2%)</strong>, 100% organic, cùng <strong>16 lượt thả cảm xúc</strong> (tăng từ 7 kỳ trước). Bình luận và repost vẫn bằng 0, người theo dõi giữ ở mức 11. Tổng thể: cần <strong>khôi phục nhịp đăng và bổ sung video trên Facebook</strong>, đồng thời <strong>tận dụng đà tăng của LinkedIn</strong> để nuôi tệp B2B và tăng follower nền.</p>
+  </div>
+
+  <!-- SO SÁNH KỲ TRƯỚC -->
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-gray"></span>So sánh với kỳ trước (theo Meta Business Suite &amp; LinkedIn Analytics)</div>
+  <div class="compare-banner">
+    <div class="item"><span class="label">FB Lượt xem</span><span class="val down">1.026 ↓ 19%</span></div>
+    <div class="item"><span class="label">FB Thời gian xem</span><span class="val down">1:07 ↓ 55%</span></div>
+    <div class="item"><span class="label">FB Tương tác</span><span class="val down">5 ↓ 58%</span></div>
+    <div class="item"><span class="label">LI Hiển thị</span><span class="val up">309 ↑ 149,2%</span></div>
+    <div class="item"><span class="label">LI Cảm xúc</span><span class="val up">16 ↑ (từ 7)</span></div>
+    <div class="item"><span class="label">LI Người theo dõi</span><span class="val flat">11 → 11</span></div>
+  </div>
+
+  <!-- TIẾN ĐỘ MỤC TIÊU THÁNG 7 -->
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-gray"></span>Tiến độ so với mục tiêu tháng 7 (đã ~81% thời gian tháng)</div>
+  <div class="progress-wrap">
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">FB Lượt xem — mục tiêu 8.000+</span><span class="stat">~3.680 / 8.000 (46%)</span></div>
+      <div class="bar bar-fb"><span style="width:46%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">LI Hiển thị — mục tiêu 900+</span><span class="stat">~680 / 900 (76%)</span></div>
+      <div class="bar bar-li"><span style="width:76%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">LI Cảm xúc — mục tiêu 30+</span><span class="stat">~30 / 30 (100%)</span></div>
+      <div class="bar bar-li"><span style="width:100%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">LI Người theo dõi — mục tiêu 25+</span><span class="stat">11 / 25 (44%)</span></div>
+      <div class="bar bar-li"><span style="width:44%"></span></div>
+    </div>
+  </div>
+  <p class="note">Số cộng dồn tháng là ước tính (cộng các kỳ trong tháng 7), có thể chênh nhẹ do khoảng chồng ngày giữa các kỳ báo cáo. Mục tiêu LI cảm xúc đã cán mốc; mục tiêu FB lượt xem cần tăng tốc trong những ngày còn lại của tháng.</p>
+
+  <hr class="divider" />
+
+  <!-- ═══ FACEBOOK ═══ -->
+  <div class="platform-header fb">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+    Facebook — Kỳ 17/7 – 25/7/2026
+  </div>
+
+  <div class="section-label"><span class="dot dot-fb"></span>KPI &amp; Số liệu chính</div>
+  <div class="kpi-grid">
+    <div class="kpi-card fb">
+      <div class="kpi-label">Lượt xem</div>
+      <div class="kpi-value">1.026</div>
+      <div class="kpi-change down">↓ −19% so kỳ trước</div>
+      <div class="kpi-vs">Reach dồn vào các đợt đỉnh giữa & cuối kỳ</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Thời gian xem</div>
+      <div class="kpi-value">1:07</div>
+      <div class="kpi-change down">↓ −55% so kỳ trước</div>
+      <div class="kpi-vs">1 phút 7 giây — mức giảm sâu nhất kỳ</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Lượt tương tác</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-change down">↓ −58% so kỳ trước</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">Tương tác khác</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-change flat">— 0% so kỳ trước</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">% lượt xem từ Ảnh</div>
+      <div class="kpi-value">63,3%</div>
+      <div class="kpi-change flat">Định dạng dẫn dắt reach</div>
+    </div>
+    <div class="kpi-card fb">
+      <div class="kpi-label">% từ người chưa theo dõi</div>
+      <div class="kpi-value">68,9%</div>
+      <div class="kpi-change flat">Người theo dõi: 31,1%</div>
+      <div class="kpi-vs">Lan toả tốt nhưng giữ chân yếu</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-fb"></span>Cơ cấu lượt xem theo loại nội dung</div>
+  <div class="progress-wrap">
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">Ảnh</span><span class="stat">63,3%</span></div>
+      <div class="bar bar-fb"><span style="width:63.3%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">Nhiều ảnh</span><span class="stat">16,1%</span></div>
+      <div class="bar bar-fb"><span style="width:16.1%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">Liên kết</span><span class="stat">12,7%</span></div>
+      <div class="bar bar-fb"><span style="width:12.7%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">Thước phim (Reels)</span><span class="stat">4,0%</span></div>
+      <div class="bar bar-fb"><span style="width:4%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">Khác</span><span class="stat">2,8%</span></div>
+      <div class="bar bar-gray"><span style="width:2.8%"></span></div>
+    </div>
+    <div class="progress-item">
+      <div class="progress-top"><span class="metric">Văn bản</span><span class="stat">1,0%</span></div>
+      <div class="bar bar-gray"><span style="width:1%"></span></div>
+    </div>
+  </div>
+  <p class="note">Ảnh + Nhiều ảnh chiếm ~79,4% lượt xem — định dạng video/Reels mới đóng góp 4%, còn nhiều dư địa khai thác.</p>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-fb"></span>Bài viết trong kỳ</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Ngày đăng</th><th>Giờ</th><th>Lượt xem</th><th>Nhận xét</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="post-meta">20/7</td><td class="post-meta">09:00</td><td class="num">87</td><td class="post-meta">Bài hiệu quả nhất kỳ — nội dung tuân thủ &amp; audit trách nhiệm xã hội</td></tr>
+        <tr><td class="post-meta">23/7</td><td class="post-meta">12:00</td><td class="num">57</td><td class="post-meta">Nội dung quản lý chất lượng (QC/QA) — hiệu quả khá</td></tr>
+        <tr><td class="post-meta">24/7</td><td class="post-meta">19:34</td><td class="num">29</td><td class="post-meta">Mô hình hợp tác CMT/FOB/ODM — reach trung bình</td></tr>
+        <tr><td class="post-meta">24/7</td><td class="post-meta">19:34</td><td class="num">0</td><td class="post-meta">Bài đạt 0 lượt xem — cần rà soát định dạng/thời điểm đăng</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Số liệu lấy từ tab "Bài viết mới đây" — Meta Business Suite, kỳ 17/7–25/7/2026, 100% tự nhiên.</p>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-fb"></span>Nhận định</div>
+  <div class="analysis-grid">
+    <div class="analysis-card">
+      <h4><span class="icon">✅</span> Điểm mạnh</h4>
+      <ul>
+        <li><strong>Vẫn duy trì trên 1.000 lượt xem/kỳ (1.026)</strong> — nền reach cơ bản chưa sụp, tạo dư địa phục hồi khi khôi phục nhịp đăng.</li>
+        <li><strong>Định dạng Ảnh &amp; Nhiều ảnh vận hành ổn định</strong> (~79% reach) — thư viện nội dung hình ảnh đang là thế mạnh chắc chắn.</li>
+        <li>Bài 20/7 (tuân thủ &amp; audit CSR) đạt 87 lượt xem — chủ đề chuyên ngành, uy tín tiếp tục được đón nhận.</li>
+        <li><strong>68,9% lượt xem từ người chưa theo dõi</strong> — nội dung có khả năng vượt ra ngoài tệp follower, tiềm năng mở rộng tốt.</li>
+      </ul>
+    </div>
+    <div class="analysis-card">
+      <h4><span class="icon">⚠️</span> Cần cải thiện</h4>
+      <ul>
+        <li><strong>Thời gian xem giảm 55% (còn 1:07)</strong> — nội dung chưa giữ người xem; cần mở đầu hấp dẫn và bố cục ngắn gọn hơn.</li>
+        <li><strong>Tương tác rất thấp (5, −58%)</strong> — gần như không có bình luận; conversation chưa được kích hoạt.</li>
+        <li><strong>Có 1 bài đạt 0 lượt xem (24/7)</strong> — cần kiểm tra lại định dạng, hashtag và khung giờ đăng buổi tối.</li>
+        <li>Thước phim/Reels chỉ 4% — thiếu đòn bẩy video, đúng như cảnh báo các kỳ trước vẫn chưa khắc phục.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ═══ LINKEDIN ═══ -->
+  <div class="platform-header li">
+    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn — Kỳ 16/7 – 23/7/2026
+  </div>
+
+  <div class="section-label"><span class="dot dot-li"></span>KPI &amp; Số liệu chính</div>
+  <div class="kpi-grid">
+    <div class="kpi-card li">
+      <div class="kpi-label">Lượt hiển thị (Impressions)</div>
+      <div class="kpi-value">309</div>
+      <div class="kpi-change up">↑ +149,2% so kỳ trước</div>
+      <div class="kpi-vs">100% organic (Tự nhiên)</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Lượt thả cảm xúc</div>
+      <div class="kpi-value">16</div>
+      <div class="kpi-change up">↑ tăng từ 7 kỳ trước</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Bình luận</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-change flat">— 0% so kỳ trước</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Bài đăng lại (Repost)</div>
+      <div class="kpi-value">0</div>
+      <div class="kpi-change flat">— Chưa có repost nào</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Engagement Rate</div>
+      <div class="kpi-value">5,2%</div>
+      <div class="kpi-change up">16 tương tác / 309 hiển thị</div>
+      <div class="kpi-vs">Cao hơn trung bình ngành B2B (~2–3%)</div>
+    </div>
+    <div class="kpi-card li">
+      <div class="kpi-label">Người theo dõi</div>
+      <div class="kpi-value">11</div>
+      <div class="kpi-change flat">— Giữ nguyên so kỳ trước</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-li"></span>Diễn biến hiển thị trong kỳ</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Chỉ số</th><th>Diễn biến theo ngày</th><th>Nhận xét</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="post-title">Lượt hiển thị</td><td class="post-meta">Đỉnh ~70 vào 17/7 → giảm còn ~15 vào 19/7 → hồi lên ~57 vào 20/7 → hạ dần cuối kỳ</td><td class="post-meta">Hiển thị lên đỉnh khi có bài mới, tụt nhanh khi ngắt nhịp đăng</td></tr>
+        <tr><td class="post-title">Nguồn hiển thị</td><td class="post-meta">Tự nhiên 309 · Được tài trợ 0</td><td class="post-meta">Toàn bộ reach là organic — không tốn ngân sách</td></tr>
+        <tr><td class="post-title">Cảm xúc</td><td class="post-meta">Tổng 16 trong kỳ</td><td class="post-meta">Tăng gấp đôi so kỳ trước — chất lượng tương tác cải thiện</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Số liệu lấy từ tab Phân tích — LinkedIn Page Analytics, kỳ 16/7–23/7/2026. Diễn biến theo ngày đọc từ biểu đồ "Số liệu thống kê — Lượt hiển thị".</p>
+
+  <div class="section-label" style="margin-top:24px;"><span class="dot dot-li"></span>Nhận định</div>
+  <div class="analysis-grid">
+    <div class="analysis-card">
+      <h4><span class="icon">✅</span> Điểm mạnh</h4>
+      <ul>
+        <li><strong>Hiển thị bật +149,2% lên 309</strong> — tiếp nối đà tăng của kỳ trước, xác nhận nhịp đăng đều mang lại reach ổn định.</li>
+        <li><strong>Cảm xúc tăng gấp đôi (7 → 16)</strong> — tương tác đi lên cùng reach, ER đạt ~5,2%, vượt trung bình ngành B2B.</li>
+        <li>Duy trì <strong>100% organic</strong> — toàn bộ hiển thị đến từ nội dung tự nhiên, hiệu quả chi phí cao.</li>
+        <li>Reach tăng đúng thời điểm có bài đăng mới — quan hệ nhân quả rõ, dễ tối ưu bằng lịch đăng.</li>
+      </ul>
+    </div>
+    <div class="analysis-card">
+      <h4><span class="icon">⚠️</span> Cần cải thiện</h4>
+      <ul>
+        <li><strong>0 bình luận, 0 repost</strong> — reach và cảm xúc tăng nhưng chưa tạo thảo luận hay chia sẻ; nội dung cần "trích dẫn được".</li>
+        <li><strong>Người theo dõi đứng yên ở 11</strong> — chưa có chiến dịch mời theo dõi; đây là đòn bẩy chi phí 0.</li>
+        <li>Hiển thị tụt nhanh khi ngắt bài (đáy ~15 vào 19/7) — cần rải bài đều để giữ đường reach ổn định.</li>
+        <li>Còn cách mục tiêu follower tháng (25+) khá xa — cần hành động chủ động tăng tệp.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RECOMMENDATIONS -->
+  <div class="section-label"><span class="dot dot-red"></span>Đề xuất cho tuần tới &amp; đầu tháng 8</div>
+  <div class="rec-grid">
+    <div class="rec-card">
+      <div class="rec-num">1</div>
+      <div class="rec-body">
+        <strong>Khôi phục &amp; rải đều nhịp đăng Facebook</strong>
+        <p>Lượt xem và thời gian xem đều giảm sâu. Duy trì 4 bài/tuần trải đều các ngày, tránh đăng dồn cụm; kiểm tra lại khung giờ tối (bài 24/7 đạt 0 view).</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">2</div>
+      <div class="rec-body">
+        <strong>Bổ sung video/Reels cho Facebook</strong>
+        <p>Reels mới chiếm 4% lượt xem — mắt xích còn thiếu. Mục tiêu tối thiểu 1 video/tuần, 3 giây đầu mở bằng con số/câu hỏi, phụ đề lớn để tăng thời gian xem.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">3</div>
+      <div class="rec-body">
+        <strong>Tận dụng đà tăng của LinkedIn</strong>
+        <p>Hiển thị +149,2% nhờ đăng đều. Giữ 3 bài/tuần, ưu tiên nội dung xu hướng/số liệu ngành tiếng Anh — format đang hiệu quả với tệp B2B.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">4</div>
+      <div class="rec-body">
+        <strong>Kích hoạt bình luận &amp; repost trên LinkedIn</strong>
+        <p>0 comment/0 repost dù reach tăng mạnh. Kết bài bằng câu hỏi mở, gắn thẻ chuyên gia, mời đội ngũ nội bộ tương tác trong 1 giờ đầu để nuôi thuật toán.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">5</div>
+      <div class="rec-body">
+        <strong>Chạy chiến dịch mời theo dõi LinkedIn</strong>
+        <p>Follower đứng yên ở 11, còn xa mục tiêu 25+. Mời toàn bộ nhân sự &amp; đối tác theo dõi trang — việc một lần, chi phí bằng 0, mở khóa organic reach nền.</p>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-num">6</div>
+      <div class="rec-body">
+        <strong>Chuyển hóa người xem chưa theo dõi thành follower</strong>
+        <p>68,9% lượt xem FB đến từ người chưa theo dõi. Thêm CTA "Theo dõi trang" cuối mỗi caption và tối ưu ảnh bìa/giới thiệu để chốt người ghé thăm.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:20px;">Lưu ý: một số nhãn chỉ số trên dashboard Facebook bị cắt ngắn khi chụp màn hình (các ô "Lượt tương tác" phụ) — số liệu được diễn giải theo bố cục chuẩn của Meta Business Suite. Tỷ lệ phần trăm thay đổi lấy trực tiếp theo so sánh kỳ của từng nền tảng.</p>
+
+</div>
+
+<footer>
+  Báo cáo được lập bởi <strong>Harmony Agency</strong> cho <strong>Vinatex VN Co., Ltd</strong> &nbsp;·&nbsp;
+  Kỳ: 18/7 – 25/7/2026 &nbsp;·&nbsp;
+  <a href="https://vinatexvn.com" target="_blank">vinatexvn.com</a>
+</footer>
+
+</body>
+</html>
